@@ -5,7 +5,7 @@ import { DashboardChart } from "../charts/Analyticschart"
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuthStore } from "@/store/authstore";
 import { useDataStore } from "@/store/datastore";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TotalIncomeChart } from "../charts/incomechart";
 import { TotalOutcomeChart } from "../charts/outcomechart";
 import { Skeleton } from "@/components/ui/skeleton";

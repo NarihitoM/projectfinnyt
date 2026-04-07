@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogFooter,
 } from "@/components/ui/dialog";
-import { Bot, Edit3, File, FileSpreadsheet, Link, Link2, MessageCircle, Plus, Trash2, User } from "lucide-react";
+import { Bot, Edit3, File, Link, Link2, MessageCircle, Plus, Trash2, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -73,7 +73,7 @@ export const GoogleDocsagent = () => {
          }
     },[url2,selecturl])
 
-    const addgooglesheeturl = async () => {
+    const addgoogledocsurl = async () => {
         try {
             const data = await addurl2(id ?? "", urlcreate);
             if (data.success) {
@@ -177,20 +177,20 @@ export const GoogleDocsagent = () => {
             <Dialog open={openurl} onOpenChange={setopenurl}>
                 <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
-                        <DialogTitle className="flex justify-center items-center gap-2">Add Google Sheet URL <Link2 /></DialogTitle>
+                        <DialogTitle className="flex justify-center items-center gap-2">Add Google Docs URL <Link2 /></DialogTitle>
                     </DialogHeader>
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="email" className="flex items-center gap-2">
                             <Link size={14} /> URL
                         </Label>
                         <Input
-                            placeholder="Add Google Sheet URL"
+                            placeholder="Add Google Docs URL"
                             value={urlcreate}
                             onChange={(e) => seturlcreate(e.target.value)}
                         />
                     </div>
                     <DialogFooter className="mt-4">
-                        <Button disabled={loadingurl2} onClick={addgooglesheeturl}>
+                        <Button disabled={loadingurl2} onClick={addgoogledocsurl}>
                             {loadingurl2 ? "Adding..." : "Add"}
                         </Button>
                     </DialogFooter>
