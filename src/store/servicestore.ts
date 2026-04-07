@@ -21,7 +21,7 @@ export const useServiceStore = create<servicecreate>((set) => (
             loadingfetch: false,
             loadingurl: false,
             url: [],
-            url2 : [],
+            url2: [],
         }),
 
         //Functions
@@ -115,7 +115,7 @@ export const useServiceStore = create<servicecreate>((set) => (
                 set({ loadingurl2: true });
                 const result = await serviceapi.fetchurl2(id);
                 set({
-                    url: result.url
+                    url2: result.url
                 })
             }
             catch (err: unknown) {
@@ -133,7 +133,8 @@ export const useServiceStore = create<servicecreate>((set) => (
                 const result = await serviceapi.Serviceacdelete(id);
                 set({
                     servicedata: null,
-                    url: []
+                    url: [],
+                    url2: []
                 })
                 return result;
             }
