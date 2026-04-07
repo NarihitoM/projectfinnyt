@@ -69,11 +69,7 @@ export const GoogleSheetagent = () => {
         fetchurl(id ?? "");
     }, [refresh])
 
-    useEffect(() => {
-        if (url.length > 0 && !selecturl) {
-            setselectedurl(url[0]);
-        }
-    }, [url, selecturl])
+   
 
     const addgooglesheeturl = async () => {
         try {

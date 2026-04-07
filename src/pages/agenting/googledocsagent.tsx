@@ -67,11 +67,6 @@ export const GoogleDocsagent = () => {
         fetchurl2(id ?? "");
     }, [refresh])
 
-    useEffect(() => {
-        if (url2.length > 0 && !selecturl) {
-            setselectedurl(url2[0]);
-        }
-    }, [url2, selecturl])
 
     const addgoogledocsurl = async () => {
         try {
