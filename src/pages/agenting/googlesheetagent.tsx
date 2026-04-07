@@ -69,7 +69,7 @@ export const GoogleSheetagent = () => {
         fetchurl(id ?? "");
     }, [refresh])
 
-   
+
 
     const addgooglesheeturl = async () => {
         try {
@@ -427,9 +427,9 @@ export const GoogleSheetagent = () => {
                                 </div>
                             </SelectTrigger>
                             <SelectContent>
-                                {url.map((element, index) => (
+                                {[...new Set(url)].map((element, index) => (
                                     <SelectItem key={index} value={element}>
-                                        URL-{index + 1}
+                                        {element}
                                     </SelectItem>
                                 ))}
                                 <Button variant="ghost"
