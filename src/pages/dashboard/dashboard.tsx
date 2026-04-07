@@ -77,7 +77,7 @@ export const Dashboard = () => {
                         <DialogTitle>Start Creating Data</DialogTitle>
                     </DialogHeader>
                     <DialogFooter>
-                        <div className="flex flex-col gap-3">
+                        <div className="flex gap-3">
                             <Button variant="outline" onClick={() => setopencheck(false)}>Cancel</Button>
                             <Button onClick={() => navigate("/app/track")}>Go To Tracker</Button>
                         </div>
