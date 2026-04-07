@@ -41,7 +41,7 @@ export const GoogleDocsagent = () => {
         Aiagentdocscreate,
         Aiagentdocsupdate,
         Aiagentdocsdelete,
-        loadingagentsheet
+        loadingagentdocs
     } = useAiStore();
 
     //States
@@ -221,7 +221,7 @@ export const GoogleDocsagent = () => {
                         </div>
                     </div>
                     <AnimatePresence mode="wait">
-                        {loadingagentsheet ? (
+                        {loadingagentdocs ? (
                             <motion.div
                                 key="loading"
                                 initial={{ opacity: 0 }}
@@ -253,8 +253,8 @@ export const GoogleDocsagent = () => {
                         )}
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
-                        <Button onClick={docsagentcreate} disabled={loadingagentsheet}>
-                            {loadingagentsheet ? "Creating..." : "Create"}
+                        <Button onClick={docsagentcreate} disabled={loadingagentdocs}>
+                            {loadingagentdocs ? "Creating..." : "Create"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -292,7 +292,7 @@ export const GoogleDocsagent = () => {
 
                     </div>
                     <AnimatePresence mode="wait">
-                        {loadingagentsheet ? (
+                        {loadingagentdocs ? (
                             <motion.div
                                 key="loading"
                                 initial={{ opacity: 0 }}
@@ -325,7 +325,7 @@ export const GoogleDocsagent = () => {
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
                         <Button onClick={docsagentupdate}>
-                            {loadingagentsheet ? "Updating..." : "Update"}
+                            {loadingagentdocs ? "Updating..." : "Update"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -363,7 +363,7 @@ export const GoogleDocsagent = () => {
 
                     </div>
                     <AnimatePresence mode="wait">
-                        {loadingagentsheet ? (
+                        {loadingagentdocs ? (
                             <motion.div
                                 key="loading"
                                 initial={{ opacity: 0 }}
@@ -396,7 +396,7 @@ export const GoogleDocsagent = () => {
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
                         <Button onClick={docsagentdelete}>
-                            {loadingagentsheet ? "Deleting..." : "Delete"}
+                            {loadingagentdocs ? "Deleting..." : "Delete"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>
