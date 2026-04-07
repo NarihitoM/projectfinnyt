@@ -44,8 +44,8 @@ export const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        if (!loadingdata) {
-            if ((income ?? 0) === 0 && (outcome ?? 0) === 0 && !localStorage.getItem("true")) {
+        if (!loadingdata && income !== undefined && outcome !== undefined) {
+            if (income === 0 && outcome === 0 && !localStorage.getItem("true")) {
                 setopencheck(true);
                 localStorage.setItem("true", "true");
             }
@@ -78,7 +78,7 @@ export const Dashboard = () => {
 
                     <DialogHeader>
                         <DialogTitle className="text-xl font-semibold">
-                            Start Creating Data
+                            Start Adding Data
                         </DialogTitle>
                     </DialogHeader>
 
