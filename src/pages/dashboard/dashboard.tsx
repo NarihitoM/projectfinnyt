@@ -16,11 +16,10 @@ import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
 
-    const istrue = localStorage.getItem("true") === "true";
     const navigate = useNavigate();
     //Variable
     const [aianalyse, setaianalyse] = useState<string>("");
-    const [opencheck, setopencheck] = useState<boolean>(istrue);
+    const [opencheck, setopencheck] = useState<boolean>(false);
 
     //Store
     const {
@@ -45,7 +44,7 @@ export const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        if ((!income && !outcome) && !localStorage.getItem("true")) {
+        if ((income ?? 0) === 0 && (outcome ?? 0) === 0 && !localStorage.getItem("true")) {
             setopencheck(true);
             localStorage.setItem("true", "true");
         }
