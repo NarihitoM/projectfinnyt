@@ -90,7 +90,6 @@ export const Dashboard = () => {
                         <Button
                             variant="outline"
                             onClick={() => setopencheck(false)}
-                            className="w-full"
                         >
                             Cancel
                         </Button>
@@ -100,7 +99,6 @@ export const Dashboard = () => {
                                 setopencheck(false);
                                 navigate("/app/track");
                             }}
-                            className="w-full"
                         >
                             Go To Tracker
                         </Button>
