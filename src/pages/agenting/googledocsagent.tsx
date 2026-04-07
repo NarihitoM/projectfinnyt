@@ -56,7 +56,7 @@ export const GoogleDocsagent = () => {
     const [aireply, setaireply] = useState<string>("");
     const [aireplyupdate, setaireplyupdate] = useState<string>("");
     const [aireplydelete, setaireplydelete] = useState<string>("");
-    
+
 
     //Navigation
     const navigate = useNavigate();
@@ -68,10 +68,10 @@ export const GoogleDocsagent = () => {
     }, [refresh])
 
     useEffect(() => {
-         if(url2.length > 0 && !selecturl){
+        if (url2.length > 0 && !selecturl) {
             setselectedurl(url2[0]);
-         }
-    },[url2,selecturl])
+        }
+    }, [url2, selecturl])
 
     const addgoogledocsurl = async () => {
         try {
@@ -132,7 +132,7 @@ export const GoogleDocsagent = () => {
             if (data.success) {
                 setaireplyupdate(data.message);
                 setprompt("")
-               
+
             }
         }
         catch (err: unknown) {
@@ -157,7 +157,7 @@ export const GoogleDocsagent = () => {
             if (data.success) {
                 setaireplydelete(data.message);
                 setprompt("")
-               
+
             }
         }
         catch (err: unknown) {
@@ -294,7 +294,7 @@ export const GoogleDocsagent = () => {
                                 className="pr-10 resize-none h-24"
                             />
                         </div>
-                        
+
                     </div>
                     <AnimatePresence mode="wait">
                         {loadingagentsheet ? (
@@ -365,7 +365,7 @@ export const GoogleDocsagent = () => {
                                 className="pr-10 resize-none h-24"
                             />
                         </div>
-                       
+
                     </div>
                     <AnimatePresence mode="wait">
                         {loadingagentsheet ? (
@@ -423,10 +423,12 @@ export const GoogleDocsagent = () => {
                         <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
                             <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
                                 <div className="flex items-center gap-1">
-                                    <SelectValue placeholder="Choose URL" />
+                                    <SelectValue placeholder="Choose URL">
+                                        {selecturl ? `URL-${url2.indexOf(selecturl) + 1}` : "Choose URL"}
+                                    </SelectValue>
                                 </div>
                             </SelectTrigger>
-                            
+
                             <SelectContent>
                                 {url2.map((element, index) => (
                                     <SelectItem key={index} value={element}>
