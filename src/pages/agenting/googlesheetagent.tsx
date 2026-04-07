@@ -427,9 +427,9 @@ export const GoogleSheetagent = () => {
                                 </div>
                             </SelectTrigger>
                             <SelectContent>
-                                {[...new Set(url)].map((element, index) => (
+                                {url.map((element, index) => (
                                     <SelectItem key={index} value={element}>
-                                        {element}
+                                        URL-{index + 1}
                                     </SelectItem>
                                 ))}
                                 <Button variant="ghost"

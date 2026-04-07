@@ -424,9 +424,9 @@ export const GoogleDocsagent = () => {
                             </SelectTrigger>
 
                             <SelectContent>
-                                {[...new Set(url2)].map((element, index) => (
+                                {url2.map((element, index) => (
                                     <SelectItem key={index} value={element}>
-                                        {element} 
+                                        URL-{index + 1} 
                                     </SelectItem>
                                 ))}
                                 <Button variant="ghost"
