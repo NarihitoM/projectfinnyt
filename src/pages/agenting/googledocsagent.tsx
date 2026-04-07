@@ -420,11 +420,14 @@ export const GoogleDocsagent = () => {
                 </div>
                 {url2 && url2.length > 0 ? (
                     <>
-                        <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
+                        <Select value={url2.indexOf(selecturl).toString()}
+                            onValueChange={(indexString) => {
+                                const index = parseInt(indexString);
+                                setselectedurl(url2[index]); 
+                            }}>
                             <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
                                 <div className="flex items-center gap-1">
                                     <SelectValue placeholder="Choose URL">
-                                        {selecturl ? `URL-${url2.indexOf(selecturl) + 1}` : "Choose URL"}
                                     </SelectValue>
                                 </div>
                             </SelectTrigger>
