@@ -480,7 +480,7 @@ export const GoogleDocsagent = () => {
                                         <Plus className="h-4 w-4 text-green-600" />
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-sm text-muted-foreground">Add a new row or initialize a new sheet.</p>
+                                        <p className="text-sm text-muted-foreground">Add or create a new data or contents.</p>
                                     </CardContent>
                                 </Card>
                                 <Card onClick={() => setopenupdate(prev => !prev)} className="hover:border-amber-500 transition-colors cursor-pointer">
@@ -489,7 +489,7 @@ export const GoogleDocsagent = () => {
                                         <Edit3 className="h-4 w-4 text-amber-600" />
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-sm text-muted-foreground">Modify existing cell values or range metadata.</p>
+                                        <p className="text-sm text-muted-foreground">Modify existing data or contents.</p>
                                     </CardContent>
                                 </Card>
 
@@ -499,7 +499,7 @@ export const GoogleDocsagent = () => {
                                         <Trash2 className="h-4 w-4 text-red-600" />
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-sm text-muted-foreground">Remove rows or clear specific ranges permanently.</p>
+                                        <p className="text-sm text-muted-foreground">Remove or delete the data or content permanently.</p>
                                     </CardContent>
                                 </Card>
                             </div>
