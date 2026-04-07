@@ -130,9 +130,7 @@ export const Login = () => {
                             <div className="grid gap-2">
                                 <div className="flex items-center justify-between">
                                     <Label htmlFor="password">Password</Label>
-                                    <a href="#" className="text-xs text-primary hover:underline underline-offset-4">
-                                        Forgot password?
-                                    </a>
+                                  
                                 </div>
                                 <Input id="password" type="password" className="h-10" placeholder="Enter Password" value={password} onChange={(e) => setpassword(e.target.value)} />
                             </div>
