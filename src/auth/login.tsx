@@ -76,7 +76,6 @@ export const Login = () => {
         onSuccess: async (response: TokenResponse) => {
             try {
                 const result = await authapi.googletoken(response);
-                console.log(result);
                 const feedback = await googlelogin(
                     result.name,
                     result.email,
