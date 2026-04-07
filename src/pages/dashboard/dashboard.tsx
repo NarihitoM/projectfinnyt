@@ -44,11 +44,13 @@ export const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        if ((income ?? 0) === 0 && (outcome ?? 0) === 0 && !localStorage.getItem("true")) {
-            setopencheck(true);
-            localStorage.setItem("true", "true");
+        if (!loadingdata) {
+            if ((income ?? 0) === 0 && (outcome ?? 0) === 0 && !localStorage.getItem("true")) {
+                setopencheck(true);
+                localStorage.setItem("true", "true");
+            }
         }
-    }, [income, outcome]);
+    }, [income, outcome, loadingdata]);
 
     const Aianalytics = async () => {
         try {
@@ -72,16 +74,38 @@ export const Dashboard = () => {
     return (
         <>
             <Dialog open={opencheck} onOpenChange={setopencheck}>
-                <DialogContent>
+                <DialogContent className="sm:max-w-md rounded-2xl">
+
                     <DialogHeader>
-                        <DialogTitle>Start Creating Data</DialogTitle>
+                        <DialogTitle className="text-xl font-semibold">
+                            Start Creating Data
+                        </DialogTitle>
                     </DialogHeader>
-                    <DialogFooter>
-                        <div className="flex gap-3">
-                            <Button variant="outline" onClick={() => setopencheck(false)}>Cancel</Button>
-                            <Button onClick={() => navigate("/app/track")}>Go To Tracker</Button>
-                        </div>
+
+                    <div className="text-sm text-muted-foreground">
+                        You don’t have any income or outcome yet. Start tracking to see your dashboard insights.
+                    </div>
+
+                    <DialogFooter className="mt-4 flex gap-3">
+                        <Button
+                            variant="outline"
+                            onClick={() => setopencheck(false)}
+                            className="w-full"
+                        >
+                            Cancel
+                        </Button>
+
+                        <Button
+                            onClick={() => {
+                                setopencheck(false);
+                                navigate("/app/track");
+                            }}
+                            className="w-full"
+                        >
+                            Go To Tracker
+                        </Button>
                     </DialogFooter>
+
                 </DialogContent>
             </Dialog>
             <div className="flex flex-col gap-3">
