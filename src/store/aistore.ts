@@ -7,7 +7,7 @@ export const useAiStore = create<aicreate>((set) => ({
     loadingai: false,
     loadingagent: false,
     loadingagentsheet: false,
-
+    loadingagentdocs : false,
     
     //Functions
     Aianalyse: async (
@@ -102,5 +102,58 @@ export const useAiStore = create<aicreate>((set) => ({
         finally {
             set({ loadingagentsheet: false })
         }
-    }
+    },
+
+    //Docs
+    Aiagentdocscreate: async (
+        id: string,
+        url: string,
+        prompt: string
+    ) => {
+        try {
+            set({ loadingagentdocs: true });
+            const result = await aiapi.aiagentdocscreate(id, url, prompt);
+            return result;
+        }
+        catch (err: unknown) {
+            throw err;
+        }
+        finally {
+            set({ loadingagentdocs: false })
+        }
+    },
+    Aiagentdocsupdate: async (
+        id: string,
+        url: string,
+        prompt: string
+    ) => {
+        try {
+            set({ loadingagentdocs: true });
+            const result = await aiapi.aiagentdocsupdate(id, url, prompt);
+            return result;
+        }
+        catch (err: unknown) {
+            throw err;
+        }
+        finally {
+            set({ loadingagentdocs: false })
+        }
+    },
+    Aiagentdocsdelete: async (
+        id: string,
+        url: string,
+        prompt: string
+    ) => {
+        try {
+            set({ loadingagentdocs: true });
+            const result = await aiapi.aiagentdocsdelete(id, url, prompt);
+            return result;
+        }
+        catch (err: unknown) {
+            throw err;
+        }
+        finally {
+            set({ loadingagentdocs: false })
+        }
+    },
 }))

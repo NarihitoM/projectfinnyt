@@ -48,6 +48,28 @@ export const serviceapi = {
         });
         return response.data;
     },
+    //Fetch Googledocsurl
+    addurl2: async (
+        id: string,
+        url: string
+    ): Promise<servicereturn> => {
+        const response = await Server.post("/service/api/addurl2", {
+            id,
+            url
+        });
+        return response.data;
+    },
+    //Fetch Googlesheeturl
+    fetchurl2: async (
+        id: string
+    ): Promise<serviceurl> => {
+        const response = await Server.get("/service/api/fetchurl2", {
+            params: {
+                id
+            }
+        });
+        return response.data;
+    },
     Serviceacdelete : async (
         id : string
     ) : Promise<servicereturn> => {

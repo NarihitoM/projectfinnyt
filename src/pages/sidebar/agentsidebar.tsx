@@ -4,9 +4,10 @@ import {
     Moon,
     LogOut,
     Github,
-    SheetIcon,
     DoorOpen,
-    Settings
+    Settings,
+    File,
+    FileSpreadsheet
 } from "lucide-react";
 import {
     Sidebar,
@@ -33,7 +34,8 @@ import { useDataStore } from "@/store/datastore";
 import { GoogleIcon } from "@/components/googleicon";
 
 const navItems = [
-    { title: "GoogleSheet", url: "/agent/googlesheet-agent", icon: SheetIcon },
+    { title: "GoogleSheet", url: "/agent/googlesheet-agent", icon: FileSpreadsheet },
+    { title: "GoogleDocs", url: "/agent/googledocs-agent", icon: File },
     { title: "Service Settings", url: "/agent/settings", icon: Settings },
 ];
 

@@ -24,7 +24,10 @@ export interface servicecreate {
     loadingservice: boolean,
     loadingfetch: boolean,
     loadingurl: boolean,
+    loadingfetch2: boolean,
+    loadingurl2: boolean,
     url: string[],
+    url2 : string[],
     resetservice: () => void,
     testconnection: (
         id: string,
@@ -41,7 +44,14 @@ export interface servicecreate {
     fetchurl: (
         id: string
     ) => Promise<void>,
-    Servicedelete : (
-        id : string
+    addurl2: (
+        id: string,
+        url: string
+    ) => Promise<servicereturn>,
+    fetchurl2: (
+        id: string
+    ) => Promise<void>,
+    Servicedelete: (
+        id: string
     ) => Promise<servicereturn>
 }

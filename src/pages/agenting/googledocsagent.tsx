@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogFooter,
 } from "@/components/ui/dialog";
-import { Bot, Edit3, FileSpreadsheet, Link, Link2, MessageCircle, Plus, Trash2, User } from "lucide-react";
+import { Bot, Edit3, File, FileSpreadsheet, Link, Link2, MessageCircle, Plus, Trash2, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -22,25 +22,25 @@ import { useAiStore } from "@/store/aistore";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-export const GoogleSheetagent = () => {
+export const GoogleDocsagent = () => {
 
     //Store
     const {
         servicefetch,
         servicedata,
         loadingfetch,
-        fetchurl,
-        loadingurl,
-        addurl,
-        url,
+        fetchurl2,
+        loadingurl2,
+        addurl2,
+        url2,
     } = useServiceStore();
     const {
         id
     } = useAuthStore();
     const {
-        Aiagentsheetcreate,
-        Aiagentsheetupdate,
-        Aiagentsheetdelete,
+        Aiagentdocscreate,
+        Aiagentdocsupdate,
+        Aiagentdocsdelete,
         loadingagentsheet
     } = useAiStore();
 
@@ -53,12 +53,10 @@ export const GoogleSheetagent = () => {
     const [opendelete, setopendelete] = useState<boolean>(false);
     const [selecturl, setselectedurl] = useState<string>("");
     const [prompt, setprompt] = useState<string>("");
-    const [row, setrow] = useState<string>("");
-    const [col, setcol] = useState<string>("");
     const [aireply, setaireply] = useState<string>("");
     const [aireplyupdate, setaireplyupdate] = useState<string>("");
     const [aireplydelete, setaireplydelete] = useState<string>("");
-
+    
 
     //Navigation
     const navigate = useNavigate();
@@ -66,18 +64,18 @@ export const GoogleSheetagent = () => {
     //Functions
     useEffect(() => {
         servicefetch(id ?? "");
-        fetchurl(id ?? "");
+        fetchurl2(id ?? "");
     }, [refresh])
 
     useEffect(() => {
-        if (url.length > 0 && !selecturl) {
-            setselectedurl(url[0]);
-        }
-    }, [url, selecturl])
+         if(url2.length > 0 && !selecturl){
+            setselectedurl(url2[0]);
+         }
+    },[url2,selecturl])
 
     const addgooglesheeturl = async () => {
         try {
-            const data = await addurl(id ?? "", urlcreate);
+            const data = await addurl2(id ?? "", urlcreate);
             if (data.success) {
                 toast.success(data.message);
             }
@@ -97,7 +95,7 @@ export const GoogleSheetagent = () => {
 
 
     //Create
-    const sheetagentcreate = async () => {
+    const docsagentcreate = async () => {
         try {
             if (!selecturl) {
                 return toast.error("Please Select The Url")
@@ -105,7 +103,7 @@ export const GoogleSheetagent = () => {
             if (!prompt) {
                 return toast.error("Please Enter The Instructions To Do")
             }
-            const data = await Aiagentsheetcreate(id ?? "", selecturl, prompt);
+            const data = await Aiagentdocscreate(id ?? "", selecturl, prompt);
             if (data.success) {
                 setaireply(data.message);
                 setprompt("")
@@ -122,7 +120,7 @@ export const GoogleSheetagent = () => {
     }
 
     //Update
-    const sheetagentupdate = async () => {
+    const docsagentupdate = async () => {
         try {
             if (!selecturl) {
                 return toast.error("Please Select The Url")
@@ -130,12 +128,11 @@ export const GoogleSheetagent = () => {
             if (!prompt) {
                 return toast.error("Please Enter The Instructions To Do")
             }
-            const data = await Aiagentsheetupdate(id ?? "", selecturl, prompt, Number(row), Number(col));
+            const data = await Aiagentdocsupdate(id ?? "", selecturl, prompt);
             if (data.success) {
                 setaireplyupdate(data.message);
                 setprompt("")
-                setrow("")
-                setcol("")
+               
             }
         }
         catch (err: unknown) {
@@ -148,7 +145,7 @@ export const GoogleSheetagent = () => {
     }
 
     //Delete
-    const sheetagentdelete = async () => {
+    const docsagentdelete = async () => {
         try {
             if (!selecturl) {
                 return toast.error("Please Select The Url")
@@ -156,12 +153,11 @@ export const GoogleSheetagent = () => {
             if (!prompt) {
                 return toast.error("Please Enter The Instructions To Do")
             }
-            const data = await Aiagentsheetdelete(id ?? "", selecturl, prompt, Number(row), Number(col));
+            const data = await Aiagentdocsdelete(id ?? "", selecturl, prompt);
             if (data.success) {
                 setaireplydelete(data.message);
                 setprompt("")
-                setrow("")
-                setcol("")
+               
             }
         }
         catch (err: unknown) {
@@ -194,8 +190,8 @@ export const GoogleSheetagent = () => {
                         />
                     </div>
                     <DialogFooter className="mt-4">
-                        <Button disabled={loadingurl} onClick={addgooglesheeturl}>
-                            {loadingurl ? "Adding..." : "Add"}
+                        <Button disabled={loadingurl2} onClick={addgooglesheeturl}>
+                            {loadingurl2 ? "Adding..." : "Add"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -205,7 +201,7 @@ export const GoogleSheetagent = () => {
             <Dialog open={opencreate} onOpenChange={setopencreate}>
                 <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
-                        <DialogTitle>Create Data</DialogTitle>
+                        <DialogTitle>Create Content</DialogTitle>
                     </DialogHeader>
 
                     <div className="flex flex-col gap-3 mt-2">
@@ -214,17 +210,17 @@ export const GoogleSheetagent = () => {
                                 <Link size={14} /> URL
                             </Label>
                             <Input
-                                placeholder="Google Sheet URL"
+                                placeholder="Google Docs URL"
                                 value={selecturl}
                                 disabled
                             />
                         </div>
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="key" className="flex items-center gap-2">
-                                <MessageCircle size={14} /> Instructions To Do
+                                <MessageCircle size={14} />Prompt To Edit
                             </Label>
                             <Textarea value={prompt} onChange={(e) => setprompt(e.target.value)}
-                                placeholder="Enter Instructions"
+                                placeholder="Enter Prompt"
                                 className="pr-10 resize-none h-24"
                             />
                         </div>
@@ -262,7 +258,7 @@ export const GoogleSheetagent = () => {
                         )}
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
-                        <Button onClick={sheetagentcreate} disabled={loadingagentsheet}>
+                        <Button onClick={docsagentcreate} disabled={loadingagentsheet}>
                             {loadingagentsheet ? "Creating..." : "Create"}
                         </Button>
                     </DialogFooter>
@@ -273,7 +269,7 @@ export const GoogleSheetagent = () => {
             <Dialog open={openupdate} onOpenChange={setopenupdate}>
                 <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
-                        <DialogTitle>Update Data</DialogTitle>
+                        <DialogTitle>Update Content</DialogTitle>
                     </DialogHeader>
 
                     <div className="flex flex-col gap-3 mt-2">
@@ -282,23 +278,23 @@ export const GoogleSheetagent = () => {
                                 <Link size={14} /> URL
                             </Label>
                             <Input
-                                placeholder="Google Sheet URL"
+                                placeholder="Google Docs URL"
                                 value={selecturl}
                                 disabled
                             />
                         </div>
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="key" className="flex items-center gap-2">
-                                <MessageCircle size={14} /> Instructions To Do
+                                <MessageCircle size={14} />Prompt To Edit
                             </Label>
                             <Textarea
                                 value={prompt}
                                 onChange={(e) => setprompt(e.target.value)}
-                                placeholder="Enter Instructions"
+                                placeholder="Enter Prompt"
                                 className="pr-10 resize-none h-24"
                             />
                         </div>
-
+                        
                     </div>
                     <AnimatePresence mode="wait">
                         {loadingagentsheet ? (
@@ -333,7 +329,7 @@ export const GoogleSheetagent = () => {
                         )}
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
-                        <Button onClick={sheetagentupdate}>
+                        <Button onClick={docsagentupdate}>
                             {loadingagentsheet ? "Updating..." : "Update"}
                         </Button>
                     </DialogFooter>
@@ -344,7 +340,7 @@ export const GoogleSheetagent = () => {
             <Dialog open={opendelete} onOpenChange={setopendelete}>
                 <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
-                        <DialogTitle>Delete Data</DialogTitle>
+                        <DialogTitle>Delete Content</DialogTitle>
                     </DialogHeader>
 
                     <div className="flex flex-col gap-3 mt-2">
@@ -353,23 +349,23 @@ export const GoogleSheetagent = () => {
                                 <Link size={14} /> URL
                             </Label>
                             <Input
-                                placeholder="Google Sheet URL"
-                                value={url ?? ""}
+                                placeholder="Google Docs URL"
+                                value={url2 ?? ""}
                                 disabled
                             />
                         </div>
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="key" className="flex items-center gap-2">
-                                <MessageCircle size={14} /> Instructions To Do
+                                <MessageCircle size={14} />Prompt To Edit
                             </Label>
                             <Textarea
                                 value={prompt}
                                 onChange={(e) => setprompt(e.target.value)}
-                                placeholder="Enter Instructions"
+                                placeholder="Enter Prompt"
                                 className="pr-10 resize-none h-24"
                             />
                         </div>
-
+                       
                     </div>
                     <AnimatePresence mode="wait">
                         {loadingagentsheet ? (
@@ -404,7 +400,7 @@ export const GoogleSheetagent = () => {
                         )}
                     </AnimatePresence>
                     <DialogFooter className="mt-4">
-                        <Button onClick={sheetagentdelete}>
+                        <Button onClick={docsagentdelete}>
                             {loadingagentsheet ? "Deleting..." : "Delete"}
                         </Button>
                     </DialogFooter>
@@ -412,17 +408,17 @@ export const GoogleSheetagent = () => {
             </Dialog>
             <div className="flex flex-col">
                 <div className="flex flex-col gap-2">
-                    <h1 className="text-4xl font-medium">GoogleSheet</h1>
-                    <p className="text-muted-foreground">Welcome To Ai-Powered GoogleSheet Automation Agent.</p>
+                    <h1 className="text-4xl font-medium">GoogleDocs</h1>
+                    <p className="text-muted-foreground">Welcome To Ai-Powered GoogleDocs Automation Agent.</p>
 
                 </div>
             </div>
             <div className="flex justify-between items-center gap-2 mt-4">
                 <div className="flex gap-2">
-                    <FileSpreadsheet className="text-green-600" />
-                    <h2 className="text-xl font-bold">Sheet Tools</h2>
+                    <File className="text-green-600" />
+                    <h2 className="text-xl font-bold">Google Docs Tools</h2>
                 </div>
-                {url && url.length > 0 ? (
+                {url2 && url2.length > 0 ? (
                     <>
                         <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
                             <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
@@ -431,7 +427,7 @@ export const GoogleSheetagent = () => {
                                 </div>
                             </SelectTrigger>
                             <SelectContent>
-                                {url.map((element, index) => (
+                                {url2.map((element, index) => (
                                     <SelectItem key={index} value={element}>
                                         URL-{index + 1}
                                     </SelectItem>

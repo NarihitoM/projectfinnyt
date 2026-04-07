@@ -3,48 +3,48 @@ import type { aiagent, aitype } from "@/types/aitype";
 
 export const aiapi = {
     //Analyse Ai
-    aianalyse : async (
-        total : number,
-        income : number , 
-        outcome : number ,
-        net : number
-    ) : Promise<aitype> => {
-       const response = await Server.post("/ai/api/aianalyse" , {
-         total,
-         income,
-         outcome,
-         net
-       });
-       return response.data
+    aianalyse: async (
+        total: number,
+        income: number,
+        outcome: number,
+        net: number
+    ): Promise<aitype> => {
+        const response = await Server.post("/ai/api/aianalyse", {
+            total,
+            income,
+            outcome,
+            net
+        });
+        return response.data
     },
     //Aiagent To See Photo And Input Data
-    aiagent : async (
-        form : FormData
-    ) : Promise<aiagent> => {
+    aiagent: async (
+        form: FormData
+    ): Promise<aiagent> => {
         const response = await Server.post("/ai/api/aiagent", form);
         return response.data;
     },
     //GoogleSheetAgent
-    aiagentsheetcreate : async (
-        id : string,
-        url : string,
-        prompt : string
-    ) : Promise<aiagent> => {
-        const response = await Server.post("/ai/api/aiagentsheet",{
+    aiagentsheetcreate: async (
+        id: string,
+        url: string,
+        prompt: string
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentsheet", {
             id,
             url,
             prompt
         })
         return response.data;
     },
-    aiagentsheetupdate : async (
-        id : string,
-        url : string,
-        prompt : string,
-        row? : number,
-        col? : number
-    ) : Promise<aiagent> => {
-        const response  = await Server.post("/ai/api/aiagentsheetupdate",{
+    aiagentsheetupdate: async (
+        id: string,
+        url: string,
+        prompt: string,
+        row?: number,
+        col?: number
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentsheetupdate", {
             id,
             url,
             prompt,
@@ -53,14 +53,14 @@ export const aiapi = {
         })
         return response.data
     },
-    aiagentsheetdelete : async (
-        id : string,
-        url : string,
-        prompt : string,
-        row? : number,
-        col? : number
-    ) : Promise<aiagent> => {
-        const response  = await Server.post("/ai/api/aiagentsheetdelete",{
+    aiagentsheetdelete: async (
+        id: string,
+        url: string,
+        prompt: string,
+        row?: number,
+        col?: number
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentsheetdelete", {
             id,
             url,
             prompt,
@@ -68,5 +68,42 @@ export const aiapi = {
             col
         })
         return response.data
+    },
+    //GoogledocsAgent
+    aiagentdocscreate: async (
+        id: string,
+        url: string,
+        prompt: string,
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentdocs", {
+            id,
+            url,
+            prompt
+        })
+        return response.data;
+    },
+    aiagentdocsupdate: async (
+        id: string,
+        url: string,
+        prompt: string
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentdocsupdate", {
+            id,
+            url,
+            prompt
+        })
+        return response.data;
+    },
+    aiagentdocsdelete: async (
+        id: string,
+        url: string,
+        prompt: string
+    ): Promise<aiagent> => {
+        const response = await Server.post("/ai/api/aiagentdocsdelete", {
+            id,
+            url,
+            prompt
+        })
+        return response.data;
     }
 }

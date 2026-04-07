@@ -9,7 +9,10 @@ export const useServiceStore = create<servicecreate>((set) => (
         loadingservice: false,
         loadingfetch: false,
         loadingurl: false,
+        loadingurl2: false,
+        loadingfetch2: false,
         url: [],
+        url2: [],
 
         //State Clear
         resetservice: () => set({
@@ -18,6 +21,7 @@ export const useServiceStore = create<servicecreate>((set) => (
             loadingfetch: false,
             loadingurl: false,
             url: [],
+            url2 : [],
         }),
 
         //Functions
@@ -88,8 +92,41 @@ export const useServiceStore = create<servicecreate>((set) => (
                 set({ loadingurl: false })
             }
         },
+        addurl2: async (
+            id: string,
+            url: string
+        ) => {
+            try {
+                set({ loadingurl2: true });
+                const result = await serviceapi.addurl2(id, url);
+                return result;
+            }
+            catch (err: unknown) {
+                throw err;
+            }
+            finally {
+                set({ loadingurl2: false })
+            }
+        },
+        fetchurl2: async (
+            id: string
+        ) => {
+            try {
+                set({ loadingurl2: true });
+                const result = await serviceapi.fetchurl2(id);
+                set({
+                    url: result.url
+                })
+            }
+            catch (err: unknown) {
+                throw err;
+            }
+            finally {
+                set({ loadingurl2: false })
+            }
+        },
         Servicedelete: async (
-            id: string  
+            id: string
         ) => {
             try {
                 set({ loadingservice: true })

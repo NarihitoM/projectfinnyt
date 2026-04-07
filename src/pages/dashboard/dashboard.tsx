@@ -108,7 +108,6 @@ export const Dashboard = () => {
                             Go To Tracker
                         </Button>
                     </DialogFooter>
-
                 </DialogContent>
             </Dialog>
             <div className="flex flex-col gap-3">

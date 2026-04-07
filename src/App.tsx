@@ -15,38 +15,40 @@ import { Sidebarrrenderagent } from "./pages/sidebar/agentsidebar";
 import { GoogleSheetagent } from "./pages/agenting/googlesheetagent";
 import { Setting } from "./pages/agenting/setting";
 import ContactPage from "./pages/landing/contactpage";
+import { GoogleDocsagent } from "./pages/agenting/googledocsagent";
 
 function App() {
 
-  const { id , userfetch } = useAuthStore();
+  const { id, userfetch } = useAuthStore();
 
-   useEffect(() => {
-        if (!id) {
-            userfetch();
-        }
-    }, [id, userfetch]);
+  useEffect(() => {
+    if (!id) {
+      userfetch();
+    }
+  }, [id, userfetch]);
 
   return (
     <BrowserRouter>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<ContactPage/>} />
+          <Route path="/contact" element={<ContactPage />} />
           {!id &&
-          <> 
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          </>}
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </>}
 
 
           <Route element={<Protectedroute />} >
             <Route path="/app" element={<Sidebarrrender />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="track" element={<Tracker />} />
-              <Route path="agent" element={<Agenting/>} />
+              <Route path="agent" element={<Agenting />} />
             </Route>
-            <Route path="/agent" element={<Sidebarrrenderagent/>} >
+            <Route path="/agent" element={<Sidebarrrenderagent />} >
               <Route path="googlesheet-agent" element={<GoogleSheetagent />} />
+              <Route path="googledocs-agent" element={<GoogleDocsagent />} />
               <Route path="settings" element={<Setting />} />
             </Route>
           </Route>
