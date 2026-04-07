@@ -84,7 +84,7 @@ export const useDataStore = create<datacreate>((set) => ({
         id: string
     ) => {
         try {
-            set({ loadingincomeoutcome: false })
+            set({ loadingincomeoutcome: true })
             const result = await dataapi.fetchtrackincome(id);
             set({
                 incometable: result.data
@@ -103,7 +103,7 @@ export const useDataStore = create<datacreate>((set) => ({
         id: string
     ) => {
         try {
-            set({ loadingincomeoutcome: false })
+            set({ loadingincomeoutcome: true })
             const result = await dataapi.fetchtrackoutcome(id);
             set({
                 outcometable: result.data
