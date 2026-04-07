@@ -154,11 +154,12 @@ export const Home = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-5xl max-md:text-4xl">Experience The Ai Powered Financial Management With Agenting.</motion.h1>
+                        className="text-5xl max-md:text-4xl max-sm:text-3xl">Experience The Ai Powered Financial Management With Agenting.</motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
+                        className="max-md:text-lg max-sm:text-sm text-xl text-muted-foreground "
                     >Automate your finances, predict future trends, and make confident decisions with intelligent AI-driven.{<br />}Trusted by businesses to simplify and scale financial operations.
                     </motion.p>
                     <motion.div
