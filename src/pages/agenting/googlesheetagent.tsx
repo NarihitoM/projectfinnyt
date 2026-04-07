@@ -424,15 +424,10 @@ export const GoogleSheetagent = () => {
                 </div>
                 {url && url.length > 0 ? (
                     <>
-                        <Select value={url.indexOf(selecturl).toString()}
-                            onValueChange={(indexString) => {
-                                const index = parseInt(indexString);
-                                setselectedurl(url[index]); 
-                            }}>
+                        <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
                             <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
                                 <div className="flex items-center gap-1">
-                                    <SelectValue placeholder="Choose URL">
-                                    </SelectValue>
+                                    <SelectValue placeholder="Choose URL" />
                                 </div>
                             </SelectTrigger>
                             <SelectContent>
