@@ -169,37 +169,8 @@ export const Setting = () => {
                         <div className="mt-4 flex items-center space-x-4 justify-between p-4 rounded-xl shadow-md border">
                             <div className="flex gap-2 items-center">
                                 <Skeleton className="h-6 w-6 rounded-full" />
-
                                 <Skeleton className="h-4 w-40 rounded-md" />
                             </div>
-
-                            <Skeleton className="h-4 w-20 rounded-md" />
-                        </div>
-                        <div className="mt-4 flex items-center space-x-4 justify-between p-4 rounded-xl shadow-md border">
-                            <div className="flex gap-2 items-center">
-                                <Skeleton className="h-6 w-6 rounded-full" />
-
-                                <Skeleton className="h-4 w-40 rounded-md" />
-                            </div>
-
-                            <Skeleton className="h-4 w-20 rounded-md" />
-                        </div>
-                        <div className="mt-4 flex items-center space-x-4 justify-between p-4 rounded-xl shadow-md border">
-                            <div className="flex gap-2 items-center">
-                                <Skeleton className="h-6 w-6 rounded-full" />
-
-                                <Skeleton className="h-4 w-40 rounded-md" />
-                            </div>
-
-                            <Skeleton className="h-4 w-20 rounded-md" />
-                        </div>
-                        <div className="mt-4 flex items-center space-x-4 justify-between p-4 rounded-xl shadow-md border">
-                            <div className="flex gap-2 items-center">
-                                <Skeleton className="h-6 w-6 rounded-full" />
-
-                                <Skeleton className="h-4 w-40 rounded-md" />
-                            </div>
-
                             <Skeleton className="h-4 w-20 rounded-md" />
                         </div>
                     </>)
