@@ -307,7 +307,7 @@ export const Tracker = () => {
                                 </TableHeader>
                                 {loadingincomeoutcome ?
                                     <TableBody>
-                                        {[...Array(5)].map((_, i) => (
+                                        {[...Array(15)].map((_, i) => (
                                             <TableRow key={i}>
                                                 <TableCell><Skeleton className="h-4 w-25" /></TableCell>
                                                 <TableCell><Skeleton className="h-4 w-20" /></TableCell>
