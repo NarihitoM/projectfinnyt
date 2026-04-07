@@ -8,7 +8,7 @@ export const useDataStore = create<datacreate>((set) => ({
     loadingcreatedata: false,
     loadingincomeoutcome: false,
     loadingchart: false,
-    hasfetch : false,
+    hasfetch: false,
     years: [],
     monthlyreport: [],
     incomechart: [],
@@ -40,6 +40,7 @@ export const useDataStore = create<datacreate>((set) => ({
         id: string
     ) => {
         try {
+            set({ loadingdata: true, hasfetch: false });
             const result = await dataapi.fetchdata(id);
             set({
                 income: result.income,

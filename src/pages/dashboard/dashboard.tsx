@@ -45,17 +45,17 @@ export const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        if (hasfetch) {
-            if (
-                (income ?? 0) === 0 &&
-                (outcome ?? 0) === 0 &&
-                !localStorage.getItem("shown")
-            ) {
-                setopencheck(true);
-                localStorage.setItem("shown", "true");
-            }
+        if (loadingdata || !hasfetch) return;
+
+        if (
+            income === 0 &&
+            outcome === 0 &&
+            !localStorage.getItem("shown")
+        ) {
+            setopencheck(true);
+            localStorage.setItem("shown", "true");
         }
-    }, [income, outcome, hasfetch]);
+    }, [income, outcome, loadingdata, hasfetch]);
 
     const Aianalytics = async () => {
         try {
