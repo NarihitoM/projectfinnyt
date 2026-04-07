@@ -8,6 +8,7 @@ export const useDataStore = create<datacreate>((set) => ({
     loadingcreatedata: false,
     loadingincomeoutcome: false,
     loadingchart: false,
+    hasfetch : false,
     years: [],
     monthlyreport: [],
     incomechart: [],
@@ -42,7 +43,8 @@ export const useDataStore = create<datacreate>((set) => ({
             const result = await dataapi.fetchdata(id);
             set({
                 income: result.income,
-                outcome: result.outcome
+                outcome: result.outcome,
+                hasfetch: true
             })
         }
         catch (err: unknown) {

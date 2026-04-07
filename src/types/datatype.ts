@@ -60,6 +60,7 @@ export interface datacreate {
     loadingcreatedata: boolean,
     loadingincomeoutcome: boolean,
     loadingchart: boolean,
+    hasfetch : boolean,
     incomechart: datachart[],
     outcomechart: datachart[],
     monthlyreport : MonthlyReport[],

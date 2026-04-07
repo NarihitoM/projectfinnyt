@@ -29,7 +29,8 @@ export const Dashboard = () => {
     const { fetchdata,
         income,
         outcome,
-        loadingdata } = useDataStore();
+        loadingdata,
+        hasfetch } = useDataStore();
     const {
         Aianalyse,
         loadingai } = useAiStore();
@@ -42,9 +43,9 @@ export const Dashboard = () => {
     useEffect(() => {
         fetchdata(id ?? "");
     }, [])
-    
+
     useEffect(() => {
-        if (!loadingdata) {
+        if (hasfetch) {
             if (
                 (income ?? 0) === 0 &&
                 (outcome ?? 0) === 0 &&
@@ -54,7 +55,7 @@ export const Dashboard = () => {
                 localStorage.setItem("shown", "true");
             }
         }
-    }, [income, outcome, loadingdata]);
+    }, [income, outcome, hasfetch]);
 
     const Aianalytics = async () => {
         try {
