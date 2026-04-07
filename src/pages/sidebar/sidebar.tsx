@@ -37,7 +37,7 @@ import { GoogleIcon } from "@/components/googleicon";
 const navItems = [
     { title: "Dashboard", url: "/app/dashboard", icon: LayoutDashboard },
     { title: "Tracker", url: "/app/track", icon: Receipt },
-    { title: "Agenting", url: "/app/agent", icon: BotMessageSquare },
+    { title: "AgentTools", url: "/app/agent", icon: BotMessageSquare },
 ];
 
 export const Sidebarrrender = () => {
