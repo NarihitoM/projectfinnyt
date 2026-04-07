@@ -114,6 +114,7 @@ export const useAuthStore = create<authcreate>((set) => ({
                 email: null,
                 type: null,
             });
+            localStorage.removeItem("true");
             return result;
         }
         catch (err: unknown) {
