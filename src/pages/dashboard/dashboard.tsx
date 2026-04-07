@@ -42,12 +42,16 @@ export const Dashboard = () => {
     useEffect(() => {
         fetchdata(id ?? "");
     }, [])
-
+    
     useEffect(() => {
-        if (!loadingdata && income !== undefined && outcome !== undefined) {
-            if (income === 0 && outcome === 0 && !localStorage.getItem("true")) {
+        if (!loadingdata) {
+            if (
+                (income ?? 0) === 0 &&
+                (outcome ?? 0) === 0 &&
+                !localStorage.getItem("shown")
+            ) {
                 setopencheck(true);
-                localStorage.setItem("true", "true");
+                localStorage.setItem("shown", "true");
             }
         }
     }, [income, outcome, loadingdata]);
