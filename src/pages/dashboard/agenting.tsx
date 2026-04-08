@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/authstore"
-import { PlayCircle, Sheet } from "lucide-react";
+import { PlayCircle, Sheet, File } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Create from "/src/assets/CreateAgent.mp4";
+import CreateDocs from "/src/assets/Create.mp4";
 import Update from "/src/assets/UpdateAgent.mp4";
+import UpdateDocs from "/src/assets/Update.mp4";
 import Delete from "/src/assets/DeleteAgent.mp4";
+import DeleteDocs from "/src/assets/Delete.mp4";
 
 export const Agenting = () => {
 
@@ -48,11 +51,119 @@ export const Agenting = () => {
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.5 }}
                     >
+                        <TabsTrigger value="googledocs" className="gap-2">
+                            GoogleDocs Agent<span><Sheet /></span>
+                        </TabsTrigger>
                         <TabsTrigger value="googlesheet" className="gap-2">
-                            GoogleSheet Agent<span><Sheet /></span>
+                            GoogleSheet Agent<span><File /></span>
                         </TabsTrigger>
                     </motion.div>
                 </TabsList>
+                <TabsContent value="googledocs">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex flex-col md:flex-row items-center gap-8 rounded-xl mt-7">
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg bg-black">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                className="w-full h-auto block"
+                            >
+                                <source src={CreateDocs} type="video/mp4" />
+                            </video>
+                        </div>
+                        <div className="w-full md:w-1/2 space-y-4">
+                            <h1 className="text-3xl font-bold tracking-tight">
+                                Creating Google Docs with AI Agent
+                            </h1>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Automate your documents and texts. Our AI agent can now generate
+                                data, text-contents and formulas directly from your natural language prompts.
+                            </p>
+                        </div>
+                    </motion.div>
+                    <hr className="mt-8" />
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex flex-col md:flex-row items-center gap-8 rounded-xl mt-15 max-md:hidden">
+                        <div className="w-full md:w-1/2 space-y-4">
+                            <h1 className="text-3xl font-bold tracking-tight">
+                                Updating Google Docs with AI Agent
+                            </h1>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Keep your documents polished and precise. Our AI agent instantly updates text, modifies paragraph styles, and synchronizes formatting across your entire document using simple conversational commands. From bolding headers to adjusting margins, transform raw text into a professional report in seconds.
+                            </p>
+                        </div>
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg bg-black">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                className="w-full h-auto block"
+                            >
+                                <source src={UpdateDocs} type="video/mp4" />
+                            </video>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex flex-col md:flex-row items-center gap-8 rounded-xl mt-15 md:hidden">
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg bg-black">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                className="w-full h-auto block"
+                            >
+                                <source src={UpdateDocs} type="video/mp4" />
+                            </video>
+                        </div>
+                        <div className="w-full md:w-1/2 space-y-4">
+                            <h1 className="text-3xl font-bold tracking-tight">
+                                Updating Google Docs with AI Agent
+                            </h1>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Keep your documents polished and precise. Our AI agent instantly updates text, modifies paragraph styles, and synchronizes formatting across your entire document using simple conversational commands. From bolding headers to adjusting margins, transform raw text into a professional report in seconds.
+                            </p>
+                        </div>
+                    </motion.div>
+                    <hr className="mt-8" />
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex flex-col md:flex-row items-center gap-8 rounded-xl mt-15">
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg bg-black">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                className="w-full h-auto block"
+                            >
+                                <source src={DeleteDocs} type="video/mp4" />
+                            </video>
+                        </div>
+                        <div className="w-full md:w-1/2 space-y-4">
+                            <h1 className="text-3xl font-bold tracking-tight">
+                                Deleting from Google Docs with AI Agent
+                            </h1>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Instantly remove outdated sections, redundant paragraphs, or entire chapters with a single command. Our AI agent identifies the exact character range to delete, ensuring your document remains clean, formatted, and free of "ghost" spaces or broken page breaks.
+                            </p>
+                        </div>
+                    </motion.div>
+                </TabsContent>
                 <TabsContent value="googlesheet">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
