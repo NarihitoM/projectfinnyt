@@ -413,40 +413,43 @@ export const GoogleDocsagent = () => {
                     <File className="text-green-600" />
                     <h2 className="text-xl font-bold">Google Docs Tools</h2>
                 </div>
-                {url2 && url2.length > 0 ? (
-                    <>
-                        <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
-                            <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
-                                <div className="flex items-center gap-1">
-                                    <SelectValue placeholder="Choose URL">
-                                    </SelectValue>
-                                </div>
-                            </SelectTrigger>
+                {loadingurl2 ? (
+                    <Skeleton className="h-8 w-20" />
+                ) :
+                    (url2 && url2.length > 0 ? (
+                        <>
+                            <Select value={selecturl} onValueChange={(value) => setselectedurl(value)}>
+                                <SelectTrigger className="border px-2 py-1 h-auto rounded-md flex items-center gap-1 focus:ring-0">
+                                    <div className="flex items-center gap-1">
+                                        <SelectValue placeholder="Choose URL">
+                                        </SelectValue>
+                                    </div>
+                                </SelectTrigger>
 
-                            <SelectContent>
-                                {url2.map((element, index) => (
-                                    <SelectItem key={index} value={element}>
-                                        URL-{index + 1} 
-                                    </SelectItem>
-                                ))}
-                                <Button variant="ghost"
-                                    className="w-full p-1 mt-2"
-                                    onClick={() => setopenurl(true)}
-                                >
+                                <SelectContent>
+                                    {url2.map((element, index) => (
+                                        <SelectItem key={index} value={element}>
+                                            URL-{index + 1}
+                                        </SelectItem>
+                                    ))}
+                                    <Button variant="ghost"
+                                        className="w-full p-1 mt-2"
+                                        onClick={() => setopenurl(true)}
+                                    >
+                                        Add Url <Link2 />
+                                    </Button>
+                                </SelectContent>
+                            </Select>
+
+                        </>
+                    ) : (
+                        <>
+                            {servicedata &&
+                                <Button onClick={() => setopenurl(prev => !prev)}>
                                     Add Url <Link2 />
-                                </Button>
-                            </SelectContent>
-                        </Select>
-
-                    </>
-                ) : (
-                    <>
-                        {servicedata &&
-                            <Button onClick={() => setopenurl(prev => !prev)}>
-                                Add Url <Link2 />
-                            </Button>}
-                    </>
-                )}
+                                </Button>}
+                        </>
+                    ))}
             </div>
             {loadingfetch ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
