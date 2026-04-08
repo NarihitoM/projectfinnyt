@@ -43,7 +43,7 @@ export const Agenting = () => {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5 }}
                 className="text-2xl mt-5 font-medium">Demo Showcase</motion.h1>
-            <Tabs defaultValue="googlesheet">
+            <Tabs defaultValue="googledocs">
                 <TabsList>
                     <motion.div
                         initial={{ opacity: 0, x: -10 }}
@@ -52,10 +52,10 @@ export const Agenting = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <TabsTrigger value="googledocs" className="gap-2">
-                            GoogleDocs Agent<span><Sheet /></span>
+                            GoogleDocs Agent<span><File /></span>
                         </TabsTrigger>
                         <TabsTrigger value="googlesheet" className="gap-2">
-                            GoogleSheet Agent<span><File /></span>
+                            GoogleSheet Agent<span><Sheet /></span>
                         </TabsTrigger>
                     </motion.div>
                 </TabsList>
