@@ -420,7 +420,7 @@ export const GoogleSheetagent = () => {
                 </div>
                 {loadingurl ?
                     (
-                        <Skeleton className="h-8 w-20" />
+                        <Skeleton className="h-8 w-25" />
                     )
                     : (url && url.length > 0 ? (
                         <>

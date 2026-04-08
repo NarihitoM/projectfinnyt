@@ -414,7 +414,7 @@ export const GoogleDocsagent = () => {
                     <h2 className="text-xl font-bold">Google Docs Tools</h2>
                 </div>
                 {loadingurl2 ? (
-                    <Skeleton className="h-8 w-20" />
+                    <Skeleton className="h-8 w-25" />
                 ) :
                     (url2 && url2.length > 0 ? (
                         <>
