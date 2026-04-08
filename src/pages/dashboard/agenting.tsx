@@ -34,8 +34,9 @@ export const Agenting = () => {
                     <li>Ai Powered Googlesheet Agent</li>
                     <li>Ai Powered Googledocs Agent</li>
                 </ul>
-                <div className="mt-3">
+                <div className="mt-3 flex gap-3">
                     <Button onClick={() => navigate("/agent/googlesheet-agent")}>Go To Playground<PlayCircle /></Button>
+                    <Button onClick={() => navigate("/app/agent/setup")}>How To Setup<PlayCircle /></Button>
                 </div>
             </motion.div>
             <motion.h1
