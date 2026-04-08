@@ -32,6 +32,7 @@ export const Agenting = () => {
                 <p className="text-muted-foreground text-medium">We support:</p>
                 <ul className="list-disc list-inside text-muted-foreground">
                     <li>Ai Powered Googlesheet Agent</li>
+                    <li>Ai Powered Googledocs Agent</li>
                 </ul>
                 <div className="mt-3">
                     <Button onClick={() => navigate("/agent/googlesheet-agent")}>Go To Playground<PlayCircle /></Button>
